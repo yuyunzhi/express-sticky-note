@@ -1,20 +1,19 @@
-// require('less/index.less');
+require('less/index.less');
 
-// var NoteManager = require('mod/note-manager.js').NoteManager;
-// var Event = require('mod/event.js');
-// var WaterFall = require('mod/waterfall.js');
+var NoteManager = require('mod/note-manager.js').NoteManager;
+var Event = require('mod/event.js');
+var WaterFall = require('mod/waterfall.js');
 
-// NoteManager.load();
+NoteManager.load();
 
-// $('.add-note').on('click', function() {
-//   NoteManager.add();
-// })
-
-// Event.on('waterfall', function(){
-//   WaterFall.init($('#content'));
-// })
+$('.xxxx').on('click', function() {
+  NoteManager.add();
 
 
-let Toast = require('../mod/toast').Toast
+})
 
-Toast('hello world')
+Event.on('waterfall', function(){
+  WaterFall.init($('#content'));
+})
+
+

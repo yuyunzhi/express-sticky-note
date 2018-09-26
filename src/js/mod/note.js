@@ -50,7 +50,6 @@ Note.prototype = {
     this.$note.find('.note-ct').css('background-color', color[1]);
   },
 
-  //???
   setLayout: function(){
     var self = this;
     if(self.clk){
