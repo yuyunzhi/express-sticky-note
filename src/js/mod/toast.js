@@ -30,9 +30,6 @@ toast.prototype = {
     }
 }
 
-Toast('hello')
-
-Window.Toast=Toast
 
 function Toast(msg,time){
     return new toast(msg,time)
