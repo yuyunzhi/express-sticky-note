@@ -20,17 +20,17 @@ router.post('/notes/add',function(req,res,next){
 
 })
 
-router.post('/notes/edit ',function(req,res,next){
+router.post('/notes/edit',function(req,res,next){
   Note.update({text:req.body.note},{where:{id:req.body.id}}).then(function(){
-    console.log(arguments)  
     res.send({status:0})
   })
 
 })
 
 router.post('/notes/delete',function(req,res,next){
-  console.log('/delete')
-  res.send('respond with a resource 嘻嘻嘻嘻嘻嘻嘻');
+  Note.destroy({where:{id:req.body.id}}).then(()=>{
+    res.send({status:0})
+  })
 })
 
 module.exports = router;
