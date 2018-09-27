@@ -110,16 +110,17 @@ Note.prototype = {
         id: this.id,
         note: msg
       }).done(function(ret){
+        console.log('1')
       if(ret.status === 0){
         Toast('update success');
       }else{
+        console.log('2')
         Toast(ret.errorMsg);
       }
     })
   },
 
   add: function (msg){
-    console.log('addd...');
     var self = this;
     $.post('/api/notes/add', {note: msg})
       .done(function(ret){

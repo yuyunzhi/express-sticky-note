@@ -31,9 +31,9 @@ var NoteManager = (function(){
   }
 
   function add(){
-    alert('1')
+    
     new Note();
-    alert('3')
+
   }
 
   return {
