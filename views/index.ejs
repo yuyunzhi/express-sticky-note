@@ -10,8 +10,16 @@
     <div id="header">
       <a class="add-note" title="添加笔记" href="#"><span class="fa fa-plus xxxx">添加</span></a>
       <ul class="user-area">
-          <li><a class="login" title="GitHub登录" href="/auth/github"> GitHub登录</a></li>
-      </ul>
+        <% if (isLogin){ %>
+           <li><img src="<%= user.avatar %>" alt=""></li>
+           <li><span title="<%= user.username %>"><%= user.username %></span></li>
+           <li><span class="line"> | </span> </li>
+           <li><a class="logout" href="/auth/logout">注销</a></li>
+         <%} else { %>
+           <li><a class="login" title="GitHub登录" href="/auth/github"> GitHub登录</a>
+           </li>
+         <% } %>
+       </ul>
 
     </div>
     <div id="content">
