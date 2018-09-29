@@ -20,13 +20,16 @@ var sequelize = new Sequelize(undefined,undefined,undefined, {
 var Note = sequelize.define('note', {
     text:{
         type:Sequelize.STRING
+    },
+    uid:{
+        type:Sequelize.STRING
     }
   });
-  
+
 // Note.sync().then(function(){
 //     Note.create({
-//         text:'hello world'
-//     }).then(function(){
+//         text:'hello world',
+//          }).then(function(){
 //         Note.findAll({raw:true}).then(function(notes){
 //             console.log(notes)
 //         })

@@ -4,32 +4,62 @@ var Note = require('../model/node').Note;
 
 /* GET users listing. */
 router.get('/notes', function(req, res, next) {
+
+
+  var query = {raw:true}
+  if(req.session.user){
+    query.where={
+      uid:req.session.user.uid
+    }
+  }
+
+
   //  前端不传任何东西，返回note的数据
-  Note.findAll({raw:true}).then(function(notes){  
+  Note.findAll(query).then(function(notes){  
+    console.log("notes",notes)
       res.send({status:0,data:notes})
   })
 });
 
 router.post('/notes/add',function(req,res,next){
+
+  if(!req.session.user){
+    return res.send({status:1,errorMsg:"请先登录"})
+  }
+
+  var uid = req.session.user.id
   var notes = req.body.note
-  Note.create({text:notes}).then(()=>{
+  Note.create({text:notes,uid:uid}).then(()=>{
     res.send({status:0})
   }).catch(()=>{
-    res.send({status:1,error:"数据库出错"})
+    res.send({status:1,errorMsg:"数据库出错"})
   })
 
 })
 
 router.post('/notes/edit',function(req,res,next){
-  Note.update({text:req.body.note},{where:{id:req.body.id}}).then(function(){
+  if(!req.session.user){
+    return res.send({status:1,errorMsg:"请先登录"})
+  }
+ 
+  var uid = req.session.user.id
+  Note.update({text:req.body.note},{where:{id:req.body.id,uid:uid}}).then(function(){
     res.send({status:0})
+  }).catch(()=>{
+    res.send({status:1,errorMsg:"数据库出错"})
   })
 
 })
 
 router.post('/notes/delete',function(req,res,next){
-  Note.destroy({where:{id:req.body.id}}).then(()=>{
+  if(!req.session.user){
+    return res.send({status:1,errorMsg:"请先登录"})
+  }
+  var uid = req.session.user.id
+  Note.destroy({where:{id:req.body.id,uid:uid}}).then(()=>{
     res.send({status:0})
+  }).catch(()=>{
+    res.send({status:1,errorMsg:"数据库出错"})
   })
 })
 
