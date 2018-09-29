@@ -6,9 +6,10 @@ var WaterFall = (function(){
   function render($c){
     $ct = $c;
     $items = $ct.children();
+    console.log($items)
 
     var nodeWidth = $items.outerWidth(true),
-      colNum = parseInt($(window).width()/nodeWidth),
+      colNum = parseInt($ct.width()/nodeWidth)+1,
       colSumHeight = [];
 
     for(var i = 0; i<colNum;i++){
@@ -29,12 +30,13 @@ var WaterFall = (function(){
           minSumHeight = colSumHeight[i];
         }
       }
-
+      
       $cur.css({
         left: nodeWidth*idx,
         top: minSumHeight
       });
       colSumHeight[idx] = $cur.outerHeight(true) + colSumHeight[idx];
+      
     });
   }
 

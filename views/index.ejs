@@ -3,27 +3,34 @@
   <head>
     <meta charset="utf-8">
     <meta property="qc:admins" content="4562636714562571563145" />
-    <title>便利贴</title>
+    <title>ASD便利贴</title>
     
   </head>
   <body>
     <div id="header">
-      <a class="add-note" title="添加笔记" href="#"><span class="fa fa-plus xxxx">添加</span></a>
-      <ul class="user-area">
-        <% if (isLogin){ %>
-           <li><img src="<%= user.avatar %>" alt=""></li>
-           <li><span title="<%= user.username %>"><%= user.username %></span></li>
-           <li><span class="line"> | </span> </li>
-           <li><a class="logout" href="/auth/logout">注销</a></li>
-         <%} else { %>
-           <li><a class="login" title="GitHub登录" href="/auth/github"> GitHub登录</a>
-           </li>
-         <% } %>
-       </ul>
-
+     
+      <div class="container">
+      <span class="logo">ASD</span><span class="name">在线便贴</span>
+      <a class="add-note xxxx" title="添加笔记" href="#"><span class="fa fa-plus">添加 +</span></a>
+      <div class="wraper">
+        <ul class="user-area">
+          <% if (isLogin){ %>
+            <li><img src="<%= user.avatar %>" alt=""></li>
+            <li><span title="<%= user.username %>"><%= user.username %></span></li>
+            <li><span class="line"> | </span> </li>
+            <li><a class="logout" href="/auth/logout">注销</a></li>
+          <%} else { %>
+            <li><a class="login" title="GitHub登录" href="/auth/github"> GitHub登录</a>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+      </div>
     </div>
-    <div id="content">
+    <div class="footer">
+      <div id="content">
 
+      </div>
     </div>
 
     <div class="stars"></div>
