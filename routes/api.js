@@ -29,9 +29,9 @@ router.post('/notes/add',function(req,res,next){
 
   var uid = req.session.user.id
   var notes = req.body.note
-  Note.create({text:notes,uid:uid}).then((data)=>{
-    console.log(data)
-    res.send({status:0})
+  Note.create({text:notes,uid:uid}).then((notes)=>{
+        
+    res.send({status:0, id:notes.id})
   }).catch(()=>{
     res.send({status:1,errorMsg:"数据库出错"})
   })

@@ -79,10 +79,12 @@ Note.prototype = {
       if( $noteCt.data('before') != $noteCt.html() ) {
         $noteCt.data('before',$noteCt.html());
         self.setLayout();
+        console.log('self.id',self.id)
         if(self.id){
           self.edit($noteCt.html())
         }else{
           self.add($noteCt.html())
+          //window.location.reload()
         }
       }
     });
@@ -125,6 +127,7 @@ Note.prototype = {
     $.post('/api/notes/add', {note: msg})
       .done(function(ret){
         if(ret.status === 0){
+          self.id = ret.id;
           Toast('添加成功');
         }else{
           self.$note.remove();
