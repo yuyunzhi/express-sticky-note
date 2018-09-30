@@ -9,7 +9,7 @@ router.get('/notes', function(req, res, next) {
   var query = {raw:true}
   if(req.session.user){
     query.where={
-      uid:req.session.user.uid
+      uid:req.session.user.id
     }
   }
 
@@ -29,7 +29,8 @@ router.post('/notes/add',function(req,res,next){
 
   var uid = req.session.user.id
   var notes = req.body.note
-  Note.create({text:notes,uid:uid}).then(()=>{
+  Note.create({text:notes,uid:uid}).then((data)=>{
+    console.log(data)
     res.send({status:0})
   }).catch(()=>{
     res.send({status:1,errorMsg:"数据库出错"})
