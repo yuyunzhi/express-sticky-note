@@ -6,7 +6,7 @@ var GitHubStrategy = require('passport-github').Strategy;
 
 passport.serializeUser(function(user, done) {
     console.log('---serializeUser---')
-    console.log(user)
+
     done(null, user);
 });
   
